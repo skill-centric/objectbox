@@ -20,6 +20,7 @@ public class TheApp extends Application {
     private void initializeObjectBox() {
 
         boxStore = MyObjectBox.builder().androidContext(TheApp.this).build();
+
         if (BuildConfig.DEBUG) {
             boolean started = new AndroidObjectBrowser(boxStore).start(this);
             Log.d("TheApp", "ObjectBrowser is started: " + started);
