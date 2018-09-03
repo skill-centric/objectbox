@@ -22,33 +22,9 @@
         }
       ],
       "relations": []
-    },
-    {
-      "id": "2:6998197995335252965",
-      "lastPropertyId": "4:6318904719804653285",
-      "name": "User",
-      "properties": [
-        {
-          "id": "1:4226452186377501073",
-          "name": "id"
-        },
-        {
-          "id": "2:3556186811732610783",
-          "name": "firstName"
-        },
-        {
-          "id": "3:1448124472933677368",
-          "name": "lastName"
-        },
-        {
-          "id": "4:6318904719804653285",
-          "name": "dateOfBirth"
-        }
-      ],
-      "relations": []
     }
   ],
-  "lastEntityId": "2:6998197995335252965",
+  "lastEntityId": "1:8348382020711836706",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",

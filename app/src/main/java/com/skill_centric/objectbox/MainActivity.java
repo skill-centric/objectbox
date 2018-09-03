@@ -1,13 +1,14 @@
 package com.skill_centric.objectbox;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
-import java.util.List;
+import java.util.GregorianCalendar;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
-import io.objectbox.query.Query;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,31 +20,18 @@ public class MainActivity extends AppCompatActivity {
         // BoxStore is an interface to access ObjectBox
         BoxStore boxStore = ((TheApp) getApplication()).getBoxStore();
 
-        // Get a "box" for your entities
-        final Box<Student> studentBox = boxStore.boxFor(Student.class);
+        final Box<User> userBox = boxStore.boxFor(User.class);
 
-        // Do some Create Read Update Delete (CRUD) operations
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
-        // Create
-        Student studentOne = new Student();
-        studentOne.setFullName("Jane Austin");
-        studentOne.setGrade(90.5);
-        studentBox.put(studentOne);
+                User user = new User(0, "James", "Jackson",
+                        new GregorianCalendar(1987, 10, 12).getTime());
 
-        Student studentTwo = new Student();
-        studentTwo.setFullName("Mark Twain");
-        studentTwo.setGrade(95.5);
-        studentBox.put(studentTwo);
-
-        // Read
-        Query<Student> query = studentBox.query().order(Student_.grade).build();
-        List<Student> students = query.find();
-
-        // Update
-        studentOne.setGrade(93.5);
-        studentBox.put(studentOne);
-
-        // Delete
-        studentBox.remove(studentOne);
+                userBox.put(user);
+            }
+        });
     }
 }
