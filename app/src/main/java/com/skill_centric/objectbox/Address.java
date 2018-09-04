@@ -1,19 +1,35 @@
 package com.skill_centric.objectbox;
 
+import io.objectbox.annotation.Entity;
+import io.objectbox.annotation.Id;
+
+@Entity
 public class Address {
 
+    @Id
+    private long id;
     private String country;
     private String city;
     private String street;
     private int homeNumber;
     private String postalCode;
 
-    public Address(String country, String city, String street, int homeNumber, String postalCode) {
+    public Address(long id, String country, String city, String street,
+                   int homeNumber, String postalCode) {
+        this.id = id;
         this.country = country;
         this.city = city;
         this.street = street;
         this.homeNumber = homeNumber;
         this.postalCode = postalCode;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public String getCountry() {

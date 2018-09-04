@@ -3,6 +3,7 @@ package com.skill_centric.objectbox;
 import java.util.Date;
 import java.util.List;
 
+import io.objectbox.annotation.Convert;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 import io.objectbox.relation.ToMany;
@@ -15,6 +16,8 @@ public class Student {
     private String firstName;
     private String lastName;
     private double grade;
+
+    @Convert(converter = GenderConverter.class, dbType = String.class)
     private Gender gender;
     private Date dateOfBirth;
 

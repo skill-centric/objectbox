@@ -1,9 +1,8 @@
 package com.skill_centric.objectbox;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
@@ -50,10 +49,10 @@ public class MainActivity extends AppCompatActivity {
         Student student1 = new Student(0, "James", "Jackson", 87.5,
                 Gender.MALE, new GregorianCalendar(1999, 5, 6).getTime());
 
-        Address address11 = new Address("Russia", "Moscow", "Lenin St.",
+        Address address11 = new Address(0, "Russia", "Moscow", "Lenin St.",
                 123, "623500");
 
-        Address address12 = new Address("Russia", "St. Petersburg", "Broad St.",
+        Address address12 = new Address(0, "Russia", "St. Petersburg", "Broad St.",
                 543, "432890");
 
         student1.getAddresses().add(address11);
@@ -63,10 +62,10 @@ public class MainActivity extends AppCompatActivity {
         Student student2 = new Student(0, "Jane", "Sommers", 95.4,
                 Gender.FEMALE, new GregorianCalendar(2000, 1, 4).getTime());
 
-        Address address21 = new Address("UK", "London", "Abchurch Lane",
+        Address address21 = new Address(0, "UK", "London", "Abchurch Lane",
                 12, "AD232B");
 
-        Address address22 = new Address("UK", "London", "Idol Lane",
+        Address address22 = new Address(0, "UK", "London", "Idol Lane",
                 43, "UI3232L");
 
         student2.getAddresses().add(address21);
@@ -76,10 +75,10 @@ public class MainActivity extends AppCompatActivity {
         Student student3 = new Student(0, "Mike", "Nickson", 82.3,
                 Gender.MALE, new GregorianCalendar(1998, 3, 8).getTime());
 
-        Address address31 = new Address("USA", "New York", "Sheffield Ave.",
+        Address address31 = new Address(0, "USA", "New York", "Sheffield Ave.",
                 77, "14075");
 
-        Address address32 = new Address("USA", "New York", "Baker Ave",
+        Address address32 = new Address(0, "USA", "New York", "Baker Ave",
                 605, "11758");
 
         student3.getAddresses().add(address31);
