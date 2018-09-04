@@ -3,16 +3,21 @@ package com.skill_centric.objectbox;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
 import java.util.Arrays;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
+import io.objectbox.query.Query;
 
 public class MainActivity extends AppCompatActivity {
+
+    private static final String TAG = MainActivity.class.getSimpleName();
 
     private BoxStore boxStore;
     private Box<Student> studentBox;
@@ -36,9 +41,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                findByName();
             }
         });
+    }
+
+    private void findByName() {
+
+        Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson").build();
+        List<Student> students = query.find();
+        for (Student student : students) {
+            Log.d(TAG, "-----------------------------------");
+            Log.d(TAG, student.toString());
+            Log.d(TAG, "-----------------------------------");
+        }
+
     }
 
     // NOTE: in production code persistence related operations
@@ -72,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
         student2.getAddresses().add(address22);
 
         // Create student3
-        Student student3 = new Student(0, "Mike", "Nickson", 82.3,
+        Student student3 = new Student(0, "Mike", "Jackson", 82.3,
                 Gender.MALE, new GregorianCalendar(1998, 3, 8).getTime());
 
         Address address31 = new Address(0, "USA", "New York", "Sheffield Ave.",

@@ -88,4 +88,17 @@ public class Student {
     public void setAddresses(ToMany<Address> addresses) {
         this.addresses = addresses;
     }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", grade=" + grade +
+                ", gender=" + gender +
+                ", dateOfBirth=" + dateOfBirth +
+                ", addresses=" + addresses +
+                '}';
+    }
 }
