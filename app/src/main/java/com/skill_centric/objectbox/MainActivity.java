@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 findByNameGenderBirth();
 
                 demoVariousFinds();
+
+                demoReuseQuery();
             }
         });
     }
@@ -81,6 +83,17 @@ public class MainActivity extends AppCompatActivity {
 
         Student firstStudent = query.findFirst();
         Log.d(TAG, "The first student is " + firstStudent);
+    }
+
+    private void demoReuseQuery() {
+
+        Query<Student> query = studentBox.query().equal(Student_.lastName, "").build();
+
+        List<Student> firstList = query.setParameter(Student_.lastName, "Jackson").find();
+        printStudents(firstList);
+
+        List<Student> secondList = query.setParameter(Student_.lastName, "Nickson").find();
+        printStudents(secondList);
     }
 
     // NOTE: in production code persistence related operations
