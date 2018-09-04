@@ -42,27 +42,29 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                findByName();
+                demoFindByName();
 
-                findByNameGenderBirth();
+                demoFindByNameGenderBirth();
 
                 demoVariousFinds();
 
                 demoReuseQuery();
 
                 demoReuseQueryWithAliases();
+
+                demoQueryProperty();
             }
         });
     }
 
-    private void findByName() {
+    private void demoFindByName() {
 
         Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson").build();
         List<Student> students = query.find();
         printStudents(students);
     }
 
-    private void findByNameGenderBirth() {
+    private void demoFindByNameGenderBirth() {
 
         Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson")
                 .equal(Student_.gender, "female")
@@ -112,6 +114,15 @@ public class MainActivity extends AppCompatActivity {
                 .find();
         printStudents(students);
 
+    }
+
+    private void demoQueryProperty() {
+
+        Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson").build();
+        String[] firstNames = query.property(Student_.firstName).findStrings();
+        for (String firstName : firstNames) {
+            Log.d(TAG, firstName);
+        }
     }
 
     // NOTE: in production code persistence related operations
