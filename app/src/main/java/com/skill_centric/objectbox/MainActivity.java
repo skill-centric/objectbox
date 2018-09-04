@@ -43,19 +43,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                demoFindByName();
+//                demoFindByName();
+//
+//                demoFindByNameGenderBirth();
+//
+//                demoVariousFinds();
+//
+//                demoReuseQuery();
+//
+//                demoReuseQueryWithAliases();
+//
+//                demoQueryProperty();
+//
+//                demoAggregation();
 
-                demoFindByNameGenderBirth();
-
-                demoVariousFinds();
-
-                demoReuseQuery();
-
-                demoReuseQueryWithAliases();
-
-                demoQueryProperty();
-
-                demoAggregation();
+                // Find all students with last name == Jackson who live in Moscow
+                demoLink();
             }
         });
     }
@@ -140,6 +143,17 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void demoLink() {
+
+        QueryBuilder<Student> queryBuilder = studentBox.query().equal(Student_.lastName, "Jackson");
+
+        queryBuilder.link(Student_.addresses).equal(Address_.city, "Moscow");
+
+        List<Student> students = queryBuilder.build().find();
+        printStudents(students);
+
+    }
+
     // NOTE: in production code persistence related operations
     // must be done in the background thread!
     private void storeStudents() {
@@ -189,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void printStudents(List<Student> students) {
+
         for (Student student : students) {
             Log.d(TAG, "-----------------------------------");
             Log.d(TAG, student.toString());
