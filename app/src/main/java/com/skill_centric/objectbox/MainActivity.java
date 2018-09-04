@@ -42,6 +42,8 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 findByName();
+
+                findByNameGenderBirth();
             }
         });
     }
@@ -50,12 +52,17 @@ public class MainActivity extends AppCompatActivity {
 
         Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson").build();
         List<Student> students = query.find();
-        for (Student student : students) {
-            Log.d(TAG, "-----------------------------------");
-            Log.d(TAG, student.toString());
-            Log.d(TAG, "-----------------------------------");
-        }
+        printStudents(students);
+    }
 
+    private void findByNameGenderBirth() {
+
+        Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson")
+                .equal(Student_.gender, "female")
+                .greater(Student_.dateOfBirth, new GregorianCalendar(1999, 1, 1).getTime())
+                .build();
+        List<Student> students = query.find();
+        printStudents(students);
     }
 
     // NOTE: in production code persistence related operations
@@ -76,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
         student1.getAddresses().add(address12);
 
         // Create student2
-        Student student2 = new Student(0, "Jane", "Sommers", 95.4,
+        Student student2 = new Student(0, "Jane", "Jackson", 95.4,
                 Gender.FEMALE, new GregorianCalendar(2000, 1, 4).getTime());
 
         Address address21 = new Address(0, "UK", "London", "Abchurch Lane",
@@ -89,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         student2.getAddresses().add(address22);
 
         // Create student3
-        Student student3 = new Student(0, "Mike", "Jackson", 82.3,
+        Student student3 = new Student(0, "Mike", "Nickson", 82.3,
                 Gender.MALE, new GregorianCalendar(1998, 3, 8).getTime());
 
         Address address31 = new Address(0, "USA", "New York", "Sheffield Ave.",
@@ -104,5 +111,13 @@ public class MainActivity extends AppCompatActivity {
         // Store the addresses and the students
         addressBox.put(Arrays.asList(address11, address12, address21, address22, address31, address32));
         studentBox.put(Arrays.asList(student1, student2, student3));
+    }
+
+    private void printStudents(List<Student> students) {
+        for (Student student : students) {
+            Log.d(TAG, "-----------------------------------");
+            Log.d(TAG, student.toString());
+            Log.d(TAG, "-----------------------------------");
+        }
     }
 }
