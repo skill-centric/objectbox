@@ -10,7 +10,6 @@ public class User {
 
     @Id
     private long id;
-
     private String firstName;
     private String lastName;
     private Date dateOfBirth;
