@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity {
                 demoVariousFinds();
 
                 demoReuseQuery();
+
+                demoReuseQueryWithAliases();
             }
         });
     }
@@ -94,6 +96,22 @@ public class MainActivity extends AppCompatActivity {
 
         List<Student> secondList = query.setParameter(Student_.lastName, "Nickson").find();
         printStudents(secondList);
+    }
+
+    private void demoReuseQueryWithAliases() {
+
+        Query<Student> query = studentBox.query()
+                .equal(Student_.lastName, "")
+                .parameterAlias("last_name_equals")
+                .startsWith(Student_.lastName, "")
+                .parameterAlias("last_name_starts")
+                .build();
+
+        List<Student> students = query.setParameter("last_name_equals", "Jackson")
+                .setParameter("last_name_starts", "Ja")
+                .find();
+        printStudents(students);
+
     }
 
     // NOTE: in production code persistence related operations
