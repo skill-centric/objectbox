@@ -57,8 +57,11 @@ public class MainActivity extends AppCompatActivity {
 //
 //                demoAggregation();
 
-                // Find all students with last name == Jackson who live in Moscow
-                demoLink();
+//                // Find all students with last name == Jackson who live in Moscow
+//                demoLink();
+
+                // Find all addresses of students with last name == Jackson who live in Moscow
+                demoBackLink();
             }
         });
     }
@@ -154,6 +157,18 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void demoBackLink() {
+
+        QueryBuilder<Address> queryBuilder = addressBox.query().equal(Address_.city, "Moscow");
+
+        queryBuilder.backlink(Student_.addresses).equal(Student_.lastName, "Jackson");
+
+        List<Address> addresses = queryBuilder.build().find();
+        for (Address address : addresses) {
+            Log.d(TAG, address.toString());
+        }
+    }
+
     // NOTE: in production code persistence related operations
     // must be done in the background thread!
     private void storeStudents() {
@@ -178,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
         Address address21 = new Address(0, "UK", "London", "Abchurch Lane",
                 12, "AD232B");
 
-        Address address22 = new Address(0, "UK", "London", "Idol Lane",
+        Address address22 = new Address(0, "Russia", "Moscow", "Red St.",
                 43, "UI3232L");
 
         student2.getAddresses().add(address21);
