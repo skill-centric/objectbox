@@ -16,6 +16,7 @@ import io.objectbox.BoxStore;
 import io.objectbox.query.PropertyQuery;
 import io.objectbox.query.Query;
 import io.objectbox.query.QueryBuilder;
+import io.objectbox.query.QueryFilter;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,25 +44,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-//                demoFindByName();
-//
-//                demoFindByNameGenderBirth();
-//
-//                demoVariousFinds();
-//
-//                demoReuseQuery();
-//
-//                demoReuseQueryWithAliases();
-//
-//                demoQueryProperty();
-//
-//                demoAggregation();
+                demoFindByName();
 
-//                // Find all students with last name == Jackson who live in Moscow
-//                demoLink();
+                demoFindByNameGenderBirth();
+
+                demoVariousFinds();
+
+                demoReuseQuery();
+
+                demoReuseQueryWithAliases();
+
+                demoQueryProperty();
+
+                demoAggregation();
+
+                // Find all students with last name == Jackson who live in Moscow
+                demoLink();
 
                 // Find all addresses of students with last name == Jackson who live in Moscow
                 demoBackLink();
+
+                demoFilters();
             }
         });
     }
@@ -167,6 +170,22 @@ public class MainActivity extends AppCompatActivity {
         for (Address address : addresses) {
             Log.d(TAG, address.toString());
         }
+    }
+
+    private void demoFilters() {
+
+        QueryBuilder<Student> queryBuilder = studentBox.query()
+                .equal(Student_.gender, "male")
+                .filter(new QueryFilter<Student>() {
+                    @Override
+                    public boolean keep(Student student) {
+
+                        return Double.compare(student.getGrade(), 85.0) > 0;
+                    }
+                });
+
+        List<Student> students = queryBuilder.build().find();
+        printStudents(students);
     }
 
     // NOTE: in production code persistence related operations
