@@ -14,6 +14,7 @@ import java.util.List;
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 import io.objectbox.query.Query;
+import io.objectbox.query.QueryBuilder;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity {
                 findByName();
 
                 findByNameGenderBirth();
+
+                demoVariousFinds();
             }
         });
     }
@@ -59,10 +62,25 @@ public class MainActivity extends AppCompatActivity {
 
         Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson")
                 .equal(Student_.gender, "female")
-                .greater(Student_.dateOfBirth, new GregorianCalendar(1999, 1, 1).getTime())
+                .greater(Student_.dateOfBirth,
+                        new GregorianCalendar(1999, 1, 1).getTime())
+                .order(Student_.firstName, QueryBuilder.CASE_SENSITIVE | QueryBuilder.DESCENDING)
                 .build();
         List<Student> students = query.find();
         printStudents(students);
+    }
+
+    private void demoVariousFinds() {
+
+        Query<Student> query = studentBox.query().equal(Student_.lastName, "Jackson").build();
+
+//        long[] ids = query.findIds();
+//        LazyList<Student> lazyList = query.findLazy();
+//        Student uniqueStudent = query.findUnique();
+//        List<Student> paginatedStudents = query.find(10, 5);
+
+        Student firstStudent = query.findFirst();
+        Log.d(TAG, "The first student is " + firstStudent);
     }
 
     // NOTE: in production code persistence related operations
