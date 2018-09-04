@@ -26,16 +26,18 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Student studentOne = new Student();
-                studentOne.setFullName("Jane Austin");
-                studentOne.setGrade(Math.random());
+                studentBox.removeAll();
 
-                long id = studentBox.put(studentOne);
-                Student loadedStudent = studentBox.get(id);
+                storeStudents();
 
-                Snackbar.make(view, "Stored student " + loadedStudent, Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Students are created!", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    private void storeStudents() {
+
+        // TODO
     }
 }
