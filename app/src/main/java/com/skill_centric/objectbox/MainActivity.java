@@ -13,6 +13,7 @@ import java.util.List;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
+import io.objectbox.query.PropertyQuery;
 import io.objectbox.query.Query;
 import io.objectbox.query.QueryBuilder;
 
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
                 demoReuseQueryWithAliases();
 
                 demoQueryProperty();
+
+                demoAggregation();
             }
         });
     }
@@ -123,6 +126,18 @@ public class MainActivity extends AppCompatActivity {
         for (String firstName : firstNames) {
             Log.d(TAG, firstName);
         }
+    }
+
+    private void demoAggregation() {
+
+        PropertyQuery propertyQuery = studentBox.query().build().property(Student_.grade);
+
+//        double minGrade = propertyQuery.minDouble();
+//        double maxGrade = propertyQuery.maxDouble();
+
+        double averageGrade = propertyQuery.avg();
+        Log.d(TAG, "The average grade: " + averageGrade);
+
     }
 
     // NOTE: in production code persistence related operations
