@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:8348382020711836706",
-      "lastPropertyId": "5:8963476327026380286",
+      "lastPropertyId": "7:5832390516466538606",
       "name": "Student",
       "properties": [
         {
@@ -15,6 +15,14 @@
         {
           "id": "3:1234505786719125865",
           "name": "grade"
+        },
+        {
+          "id": "6:5993090593838144155",
+          "name": "firstName"
+        },
+        {
+          "id": "7:5832390516466538606",
+          "name": "lastName"
         }
       ],
       "relations": []

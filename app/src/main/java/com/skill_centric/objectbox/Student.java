@@ -6,8 +6,6 @@ import io.objectbox.annotation.Id;
 @Entity
 public class Student extends Person {
 
-    @Id
-    private long id;
     private double grade;
 
     public Student(){
@@ -15,18 +13,9 @@ public class Student extends Person {
 
     public Student(long id, String firstName, String lastName, double grade) {
 
-        super(firstName, lastName);
+        super(id, firstName, lastName);
 
-        this.id = id;
         this.grade = grade;
-    }
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public double getGrade() {
@@ -40,10 +29,9 @@ public class Student extends Person {
     @Override
     public String toString() {
         return "Student{" +
-                "id=" + id +
-                ", firstName='" + getFirstName() + '\'' +
-                ", lastName='" + getLastName() + '\'' +
-                ", grade=" + grade +
+                "firstName=" + getFirstName() + ", " +
+                "lastName=" + getLastName() + ", " +
+                "grade=" + grade +
                 '}';
     }
 }
