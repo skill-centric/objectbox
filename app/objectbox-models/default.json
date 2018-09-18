@@ -35,7 +35,12 @@
           "name": "majorId"
         }
       ],
-      "relations": []
+      "relations": [
+        {
+          "id": "2:444407842145702462",
+          "name": "professors"
+        }
+      ]
     },
     {
       "id": "2:6681966841909720328",
@@ -76,11 +81,31 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "4:5162550331675796728",
+      "lastPropertyId": "3:3075826503082115503",
+      "name": "Professor",
+      "properties": [
+        {
+          "id": "1:8821620834556064428",
+          "name": "id"
+        },
+        {
+          "id": "2:1650341800493340508",
+          "name": "firstName"
+        },
+        {
+          "id": "3:3075826503082115503",
+          "name": "lastName"
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "3:7043063255869988777",
+  "lastEntityId": "4:5162550331675796728",
   "lastIndexId": "2:8322558649051020321",
-  "lastRelationId": "1:4349839112960347473",
+  "lastRelationId": "2:444407842145702462",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,

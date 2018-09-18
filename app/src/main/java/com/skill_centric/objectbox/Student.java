@@ -2,6 +2,7 @@ package com.skill_centric.objectbox;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.relation.ToMany;
 import io.objectbox.relation.ToOne;
 
 @Entity
@@ -17,6 +18,8 @@ public class Student {
     private ToOne<PassportDetails> passportDetails;
 
     private ToOne<Major> major;
+
+    private ToMany<Professor> professors;
 
     public long getId() {
         return id;
@@ -66,6 +69,14 @@ public class Student {
         this.major = major;
     }
 
+    public ToMany<Professor> getProfessors() {
+        return professors;
+    }
+
+    public void setProfessors(ToMany<Professor> professors) {
+        this.professors = professors;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -75,6 +86,7 @@ public class Student {
                 ", grade=" + grade +
                 ", passportDetails=" + passportDetails +
                 ", major=" + major +
+                ", professors=" + professors +
                 '}';
     }
 }

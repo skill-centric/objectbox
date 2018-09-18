@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
-import java.util.GregorianCalendar;
-
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
 
@@ -31,31 +29,22 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Major major = new Major("CS");
-
-                PassportDetails passportDetails = new PassportDetails();
-                passportDetails.setCode(123);
-                passportDetails.setRegistrationAddress("SomeCountry, SomeCity, SomeStreet, 99");
-                passportDetails.setDateOfBirth(new GregorianCalendar(1985, 1, 1).getTime());
+                Professor professorOne = new Professor(0L, "Mike", "Jackson");
+                Professor professorTwo = new Professor(0L, "James", "Johnson");
 
                 Student student = new Student();
-                student.setFirstName("Mike");
-                student.setLastName("Jackson");
-                student.setGrade(95.5);
-                student.getPassportDetails().setTarget(passportDetails);
+                student.setFirstName("Jane");
+                student.setLastName("Austin");
+                student.setGrade(99.5);
 
-                Student studentTwo = new Student();
-                studentTwo.setFirstName("Jane");
-                studentTwo.setLastName("Austin");
-                studentTwo.setGrade(99.5);
+                student.getProfessors().add(professorOne);
+                student.getProfessors().add(professorTwo);
 
-                major.getStudents().add(student);
-                major.getStudents().add(studentTwo);
+                studentBox.put(student);
 
-                majorBox.put(major);
+                for (Professor professor : student.getProfessors()) {
 
-                for (Student theStudent : major.getStudents()) {
-                    Log.d("MainActivity", "Student: " + theStudent);
+                    Log.d("MainActivity", "Professor: " + professor);
                 }
             }
         });

@@ -75,12 +75,7 @@
           "name": "title"
         }
       ],
-      "relations": [
-        {
-          "id": "1:4349839112960347473",
-          "name": "students"
-        }
-      ]
+      "relations": []
     }
   ],
   "lastEntityId": "3:7043063255869988777",
@@ -94,6 +89,8 @@
   "retiredPropertyUids": [
     4661357840021106746
   ],
-  "retiredRelationUids": [],
+  "retiredRelationUids": [
+    4349839112960347473
+  ],
   "version": 1
 }
