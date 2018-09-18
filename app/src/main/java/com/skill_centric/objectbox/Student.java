@@ -21,6 +21,17 @@ public class Student {
 
     private ToMany<Professor> professors;
 
+    public Student(){
+
+    }
+
+    public Student(long id, String firstName, String lastName, double grade) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.grade = grade;
+    }
+
     public long getId() {
         return id;
     }

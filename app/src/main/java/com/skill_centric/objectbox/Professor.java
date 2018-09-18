@@ -1,7 +1,9 @@
 package com.skill_centric.objectbox;
 
+import io.objectbox.annotation.Backlink;
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.relation.ToMany;
 
 @Entity
 public class Professor {
@@ -10,6 +12,9 @@ public class Professor {
     private long id;
     private String firstName;
     private String lastName;
+
+    @Backlink(to = "professors")
+    private ToMany<Student> students;
 
     public Professor() {
     }
@@ -44,12 +49,21 @@ public class Professor {
         this.lastName = lastName;
     }
 
+    public ToMany<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(ToMany<Student> students) {
+        this.students = students;
+    }
+
     @Override
     public String toString() {
         return "Professor{" +
                 "id=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", students=" + students +
                 '}';
     }
 }

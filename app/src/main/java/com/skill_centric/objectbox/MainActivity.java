@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private BoxStore boxStore;
     private Box<Major> majorBox;
     private Box<Student> studentBox;
+    private Box<Professor> professorBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         boxStore = ((TheApp) getApplication()).getBoxStore();
         studentBox = boxStore.boxFor(Student.class);
         majorBox = boxStore.boxFor(Major.class);
+        professorBox = boxStore.boxFor(Professor.class);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -32,19 +34,20 @@ public class MainActivity extends AppCompatActivity {
                 Professor professorOne = new Professor(0L, "Mike", "Jackson");
                 Professor professorTwo = new Professor(0L, "James", "Johnson");
 
-                Student student = new Student();
-                student.setFirstName("Jane");
-                student.setLastName("Austin");
-                student.setGrade(99.5);
+                Student studentOne = new Student(0L, "Jane", "Austin", 99.5);
+                studentOne.getProfessors().add(professorOne);
+                studentOne.getProfessors().add(professorTwo);
 
-                student.getProfessors().add(professorOne);
-                student.getProfessors().add(professorTwo);
+                Student studentTwo = new Student(0L, "Tom", "Nickson", 89.4);
+                studentTwo.getProfessors().add(professorTwo);
 
-                studentBox.put(student);
+                studentBox.put(studentOne);
+                studentBox.put(studentTwo);
 
-                for (Professor professor : student.getProfessors()) {
+                Professor theProfessor = professorBox.get(2L);
 
-                    Log.d("MainActivity", "Professor: " + professor);
+                for (Student student : theProfessor.getStudents()) {
+                    Log.d("MainActivity", "Student: " + student);
                 }
             }
         });
