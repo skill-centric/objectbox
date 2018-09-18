@@ -16,6 +16,8 @@ public class Student {
 
     private ToOne<PassportDetails> passportDetails;
 
+    private ToOne<Major> major;
+
     public long getId() {
         return id;
     }
@@ -56,6 +58,14 @@ public class Student {
         this.passportDetails = passportDetails;
     }
 
+    public ToOne<Major> getMajor() {
+        return major;
+    }
+
+    public void setMajor(ToOne<Major> major) {
+        this.major = major;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
@@ -64,6 +74,7 @@ public class Student {
                 ", lastName='" + lastName + '\'' +
                 ", grade=" + grade +
                 ", passportDetails=" + passportDetails +
+                ", major=" + major +
                 '}';
     }
 }

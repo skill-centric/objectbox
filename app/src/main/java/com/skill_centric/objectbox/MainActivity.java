@@ -14,6 +14,8 @@ import io.objectbox.BoxStore;
 public class MainActivity extends AppCompatActivity {
 
     private BoxStore boxStore;
+    private Box<Major> majorBox;
+    private Box<Student> studentBox;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +23,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         boxStore = ((TheApp) getApplication()).getBoxStore();
-        final Box<Student> studentBox = boxStore.boxFor(Student.class);
+        studentBox = boxStore.boxFor(Student.class);
+        majorBox = boxStore.boxFor(Major.class);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Major major = new Major("CS");
 
                 PassportDetails passportDetails = new PassportDetails();
                 passportDetails.setCode(123);
@@ -39,10 +44,19 @@ public class MainActivity extends AppCompatActivity {
                 student.setGrade(95.5);
                 student.getPassportDetails().setTarget(passportDetails);
 
-                studentBox.put(student);
+                Student studentTwo = new Student();
+                studentTwo.setFirstName("Jane");
+                studentTwo.setLastName("Austin");
+                studentTwo.setGrade(99.5);
 
-                Log.d("MainActivity", "Student: " + student);
-                Log.d("MainActivity", "PassportDetails: " + passportDetails);
+                major.getStudents().add(student);
+                major.getStudents().add(studentTwo);
+
+                majorBox.put(major);
+
+                for (Student theStudent : major.getStudents()) {
+                    Log.d("MainActivity", "Student: " + theStudent);
+                }
             }
         });
     }

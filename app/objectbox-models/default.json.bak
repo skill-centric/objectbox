@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:8348382020711836706",
-      "lastPropertyId": "3:1234505786719125865",
+      "lastPropertyId": "7:8097798089799601626",
       "name": "Student",
       "properties": [
         {
@@ -13,26 +13,87 @@
           "name": "id"
         },
         {
-          "id": "2:4661357840021106746",
-          "name": "fullName"
-        },
-        {
           "id": "3:1234505786719125865",
           "name": "grade"
+        },
+        {
+          "id": "4:2217634983502096076",
+          "name": "firstName"
+        },
+        {
+          "id": "5:2210452850722319580",
+          "name": "lastName"
+        },
+        {
+          "id": "6:566995164473186842",
+          "indexId": "1:4317103918977459507",
+          "name": "passportDetailsId"
+        },
+        {
+          "id": "7:8097798089799601626",
+          "indexId": "2:8322558649051020321",
+          "name": "majorId"
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:6681966841909720328",
+      "lastPropertyId": "4:4456495982605774",
+      "name": "PassportDetails",
+      "properties": [
+        {
+          "id": "1:6159120095146521976",
+          "name": "number"
+        },
+        {
+          "id": "2:2751472880003932352",
+          "name": "code"
+        },
+        {
+          "id": "3:4776330997527983500",
+          "name": "registrationAddress"
+        },
+        {
+          "id": "4:4456495982605774",
+          "name": "dateOfBirth"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "3:7043063255869988777",
+      "lastPropertyId": "2:3335906266697726111",
+      "name": "Major",
+      "properties": [
+        {
+          "id": "1:2256356149708008414",
+          "name": "id"
+        },
+        {
+          "id": "2:3335906266697726111",
+          "name": "title"
+        }
+      ],
+      "relations": [
+        {
+          "id": "1:4349839112960347473",
+          "name": "students"
+        }
+      ]
     }
   ],
-  "lastEntityId": "1:8348382020711836706",
-  "lastIndexId": "0:0",
-  "lastRelationId": "0:0",
+  "lastEntityId": "3:7043063255869988777",
+  "lastIndexId": "2:8322558649051020321",
+  "lastRelationId": "1:4349839112960347473",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    4661357840021106746
+  ],
   "retiredRelationUids": [],
   "version": 1
 }
