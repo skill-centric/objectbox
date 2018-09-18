@@ -2,23 +2,19 @@ package com.skill_centric.objectbox;
 
 import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
+import io.objectbox.relation.ToOne;
 
 @Entity
 public class Student {
 
     @Id
     private long id;
-    private String fullName;
+
+    private String firstName;
+    private String lastName;
     private double grade;
 
-    public Student() {
-    }
-
-    public Student(long id, String fullName, double grade) {
-        this.id = id;
-        this.fullName = fullName;
-        this.grade = grade;
-    }
+    private ToOne<PassportDetails> passportDetails;
 
     public long getId() {
         return id;
@@ -28,12 +24,20 @@ public class Student {
         this.id = id;
     }
 
-    public String getFullName() {
-        return fullName;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public double getGrade() {
@@ -44,12 +48,22 @@ public class Student {
         this.grade = grade;
     }
 
+    public ToOne<PassportDetails> getPassportDetails() {
+        return passportDetails;
+    }
+
+    public void setPassportDetails(ToOne<PassportDetails> passportDetails) {
+        this.passportDetails = passportDetails;
+    }
+
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", fullName='" + fullName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
                 ", grade=" + grade +
+                ", passportDetails=" + passportDetails +
                 '}';
     }
 }

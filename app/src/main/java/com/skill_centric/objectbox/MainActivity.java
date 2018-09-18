@@ -1,10 +1,12 @@
 package com.skill_centric.objectbox;
 
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+
+import java.util.GregorianCalendar;
 
 import io.objectbox.Box;
 import io.objectbox.BoxStore;
@@ -26,15 +28,21 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Student studentOne = new Student();
-                studentOne.setFullName("Jane Austin");
-                studentOne.setGrade(Math.random());
+                PassportDetails passportDetails = new PassportDetails();
+                passportDetails.setCode(123);
+                passportDetails.setRegistrationAddress("SomeCountry, SomeCity, SomeStreet, 99");
+                passportDetails.setDateOfBirth(new GregorianCalendar(1985, 1, 1).getTime());
 
-                long id = studentBox.put(studentOne);
-                Student loadedStudent = studentBox.get(id);
+                Student student = new Student();
+                student.setFirstName("Mike");
+                student.setLastName("Jackson");
+                student.setGrade(95.5);
+                student.getPassportDetails().setTarget(passportDetails);
 
-                Snackbar.make(view, "Stored student " + loadedStudent, Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                studentBox.put(student);
+
+                Log.d("MainActivity", "Student: " + student);
+                Log.d("MainActivity", "PassportDetails: " + passportDetails);
             }
         });
     }

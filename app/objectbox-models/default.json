@@ -5,7 +5,7 @@
   "entities": [
     {
       "id": "1:8348382020711836706",
-      "lastPropertyId": "3:1234505786719125865",
+      "lastPropertyId": "6:566995164473186842",
       "name": "Student",
       "properties": [
         {
@@ -13,26 +13,61 @@
           "name": "id"
         },
         {
-          "id": "2:4661357840021106746",
-          "name": "fullName"
-        },
-        {
           "id": "3:1234505786719125865",
           "name": "grade"
+        },
+        {
+          "id": "4:2217634983502096076",
+          "name": "firstName"
+        },
+        {
+          "id": "5:2210452850722319580",
+          "name": "lastName"
+        },
+        {
+          "id": "6:566995164473186842",
+          "indexId": "1:4317103918977459507",
+          "name": "passportDetailsId"
+        }
+      ],
+      "relations": []
+    },
+    {
+      "id": "2:6681966841909720328",
+      "lastPropertyId": "4:4456495982605774",
+      "name": "PassportDetails",
+      "properties": [
+        {
+          "id": "1:6159120095146521976",
+          "name": "number"
+        },
+        {
+          "id": "2:2751472880003932352",
+          "name": "code"
+        },
+        {
+          "id": "3:4776330997527983500",
+          "name": "registrationAddress"
+        },
+        {
+          "id": "4:4456495982605774",
+          "name": "dateOfBirth"
         }
       ],
       "relations": []
     }
   ],
-  "lastEntityId": "1:8348382020711836706",
-  "lastIndexId": "0:0",
+  "lastEntityId": "2:6681966841909720328",
+  "lastIndexId": "1:4317103918977459507",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
   "modelVersion": 4,
   "modelVersionParserMinimum": 4,
   "retiredEntityUids": [],
   "retiredIndexUids": [],
-  "retiredPropertyUids": [],
+  "retiredPropertyUids": [
+    4661357840021106746
+  ],
   "retiredRelationUids": [],
   "version": 1
 }
