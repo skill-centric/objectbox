@@ -1,9 +1,9 @@
 package com.skill_centric.objectbox;
 
-import io.objectbox.annotation.BaseEntity;
+import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
-@BaseEntity
+@Entity
 public class Person {
 
     @Id

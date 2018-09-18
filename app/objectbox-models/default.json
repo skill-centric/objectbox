@@ -26,9 +26,29 @@
         }
       ],
       "relations": []
+    },
+    {
+      "id": "2:701164968308441279",
+      "lastPropertyId": "3:8879536730351846367",
+      "name": "Person",
+      "properties": [
+        {
+          "id": "1:8193919913408477603",
+          "name": "id"
+        },
+        {
+          "id": "2:4690342001259832570",
+          "name": "firstName"
+        },
+        {
+          "id": "3:8879536730351846367",
+          "name": "lastName"
+        }
+      ],
+      "relations": []
     }
   ],
-  "lastEntityId": "1:8348382020711836706",
+  "lastEntityId": "2:701164968308441279",
   "lastIndexId": "0:0",
   "lastRelationId": "0:0",
   "lastSequenceId": "0:0",
