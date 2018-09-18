@@ -4,19 +4,20 @@ import io.objectbox.annotation.Entity;
 import io.objectbox.annotation.Id;
 
 @Entity
-public class Student {
+public class Student extends Person {
 
     @Id
     private long id;
-    private String fullName;
     private double grade;
 
-    public Student() {
+    public Student(){
     }
 
-    public Student(long id, String fullName, double grade) {
+    public Student(long id, String firstName, String lastName, double grade) {
+
+        super(firstName, lastName);
+
         this.id = id;
-        this.fullName = fullName;
         this.grade = grade;
     }
 
@@ -26,14 +27,6 @@ public class Student {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
     }
 
     public double getGrade() {
@@ -48,7 +41,8 @@ public class Student {
     public String toString() {
         return "Student{" +
                 "id=" + id +
-                ", fullName='" + fullName + '\'' +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
                 ", grade=" + grade +
                 '}';
     }

@@ -15,6 +15,14 @@
         {
           "id": "3:1234505786719125865",
           "name": "grade"
+        },
+        {
+          "id": "4:6306470006417647288",
+          "name": "firstName"
+        },
+        {
+          "id": "5:8963476327026380286",
+          "name": "lastName"
         }
       ],
       "relations": []
@@ -29,9 +37,7 @@
   "retiredEntityUids": [],
   "retiredIndexUids": [],
   "retiredPropertyUids": [
-    4661357840021106746,
-    6306470006417647288,
-    8963476327026380286
+    4661357840021106746
   ],
   "retiredRelationUids": [],
   "version": 1
